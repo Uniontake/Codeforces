@@ -32,4 +32,4 @@ $$
 
 ##### <font face="宋体" size=4 >示例图</font>
 
-![image-20191231155759404](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20191231155759404.png)
+![](img\398B.png)
