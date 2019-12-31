@@ -1,6 +1,6 @@
 # <font face="楷体">动态规划算法</font>
 
-### <font face="宋体" size=5 color=blue>$398B$ - 概率$dp$</font>
+### <font face="宋体" size=5 color=blue>$398B$ - $            probabilities\ \&\ dp$</font>
 
 #### <font face="宋体" size=5 color=blue>题意</font>
 
@@ -34,3 +34,27 @@ $$
 ##### <font face="宋体" size=4 >示例图</font>
 
 ![](img\398B.png)
+
+### <font face="宋体" size=5 color=blue>$30C$ - $probabilities\ \&\ dp$</font>
+
+#### <font face="宋体" size=5 color=blue>题意</font>
+
+​	给出二维平面内的$n$个点，每个点有$4$个属性$(x_i,y_i,t_i,p_i)$分别表示这个点的横纵坐标和它出现的时刻$t_i$，此时击中他的概率$p_i$。零时刻时，准星可以出现在任何位置，以后准星以每时刻1单位距离的速度移动，当$t_i$时刻准星移动到位置$(x_i,y_i)$时，便有$p_i$的概率击中这个目标。问最终击中点个数的期望。
+
+$(1 \leq n \leq 1000,-1000\leq x_i,y_i\leq1000,0\leq t_i \leq10^9,0\leq p_i\leq1)$
+
+#### <font face="宋体" size=5 color=blue>题解</font>
+
+​	由于$n$个点有出现的时间先后关系，所以首先按照**$t_i$的大小排序**。如果打完第$j$个目标后想要击中第$i$个目标时，必须要满足$dist(i,j) \leq t_i-t_j$。
+
+​	设$dp[i]$表示准星最后一个打的是第$i$个点时获得的期望。
+
+​	显然有$dp[1]=p_1$，并且有转移
+$$
+dp[i] = max(dp[j]+p_i)\ dist(i,j)\leq t_i-t_j\ \&\ j<i
+$$
+​	最终的最大期望即为
+$$
+ans= max(dp[i]) \ 0\leq i <n
+$$
+​	s
