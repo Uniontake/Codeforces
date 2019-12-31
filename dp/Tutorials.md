@@ -25,9 +25,10 @@ $$
 {\color {red} dp[i][j]} = 1+\frac{dp[i-1][j-1]*i*j}{n^2}+\frac{dp[i-1][j]*i*(j-1)}{n^2}+\\\frac{dp[i][j-1]*(n-i)*j}{n^2}+{\color{red}\frac{dp[i][j]*(n-i)*(n-j)}{n^2}}
 $$
 
-​	概率$dp$转移公式中$k$中存在其本身，即$dp[i][j] = x + m*dp[i][j] $需要进行**化简**
+​	概率$dp$转移公式中$k$中存在其本身，即$dp[i][j] = x + m*dp[i][j]$需要进行**化简**
+
 $$
-dp[i][j] = \frac{n^2+dp[i-1][j-1]*i*j+dp[i-1][j]*i*(j-1)+dp[i][j-1]*(n-i)*j}{n^2-(n-i)*(n-j)}
+dp[i][j] = \frac{n^2+dp[i-1][j-1]*i* j+dp[i-1][j] * i * (j-1)+dp[i][j-1] * (n-i) * j}{n^2-(n-i) * (n-j)}
 $$
 
 ##### <font face="宋体" size=4 >示例图</font>
