@@ -33,7 +33,7 @@ $$
 
 ##### <font face="宋体" size=4 >示例图</font>
 
-![](img\398B.png)
+<img src="img\398B.png" style="zoom:50%;" />
 
 ---
 
