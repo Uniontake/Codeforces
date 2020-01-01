@@ -1,6 +1,6 @@
-# <font face="楷体">动态规划算法</font>
+# <font face="楷体">动态规划指南</font>
 
-### <font face="宋体" color=green>$398B$ - $            probabilities\ \&\ dp$</font>
+### <font face="宋体" color=green>$398B$ - $            probabilities\ \&\ dp $</font>
 
 #### <font face="宋体" color=blue>题意</font>
 
@@ -64,3 +64,57 @@ $$
 
 - 距离计算需要使用$long long$，使用浮点数存在浮点误差。
 - 对于任意$dp[i]$，初始状态应是将第$i$个点作为第$1$次的射击。
+
+---
+
+### <font face="宋体" color=green>$392B$ - $dp$</font>
+
+#### <font face="宋体" color=blue>题意</font>
+
+​	$Hanoi Tower$汉若塔问题的原型是$n$个盘子从第$1$根柱子移动到第$3$根柱子，每次只能移动一个盘子，且移动过程中不改变盘子的排列关系，需要的步数至少为${\color{red}2^n-1}$。
+
+​	同样的问题，不过现在每次盘子从第$i$根柱子移动到第$j$根柱子将会耗费$t_{ij}$单位的钱（$1\leq i,j\leq3$），问将$n$个盘子从第$1$根柱子移动到第$3$根柱子的最小花费是多少。
+
+​	$1\leq t_{ij}\leq10000,i \neq j;\ \ 1\leq n \leq40$
+
+#### <font face="宋体" color=blue>题解</font>
+
+##### $HanoiTower$原问题$dp$转移
+
+​	$dp[n]$:表示求解$n$盘$3$塔问题的最小步数：
+$$
+dp[n] = 2*dp[n-1]+1
+$$
+​	即把前$n-1$个盘子从$A$柱移动到$B$柱，然后把第$n$个盘子从$A$柱移动到$C$柱，最后把前$n-1$个盘子从$B$柱移动到$C$柱。
+
+​	显然$dp[1] = 1$，$dp[n] = 2^n+1$。
+
+​	如下图所示：
+
+<img src="img\392B_1.png" alt="392B_1" style="zoom: 33%;" />
+
+##### 现最小花费问题
+
+​	由于柱子间的移动是不一样的，即花费不同，就需要增加新的状态。
+
+​	设$dp[n][l][r],1\leq l,r\leq3$，表示将$n$盘从$l$柱移动到$r$柱的最小费用。
+
+$\quad dp[0][l][r]=0\\
+\quad dp[1][1][1]=0$
+
+$\quad {\color{red}way_1} = dp[n-1][l][c]+dp[n-1][c][r]+t_{lr}\\
+\quad {\color{red}way_2} = dp[n-1][l][r]+t_{lc}+dp[n-1][r][l]+t_{cr}+dp[n-1][l][r]\\
+\quad {\color{red}dp[n][l][r]} = min(way_1,way_2)$
+
+$\quad (1\leq l,r,c\leq3,l\neq r\neq c)$
+
+​	共有两种转移的方式$way_1,way_2$，如下图所示。
+
+​	$way_1$：
+
+<img src="img\392B_1.png" alt="392B_1" style="zoom: 33%;" />
+
+​	$way_2$：
+
+<img src="img\392B_2.png" style="zoom:33%;" />
+
